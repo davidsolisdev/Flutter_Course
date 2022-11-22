@@ -3,7 +3,7 @@ import '../models/tarea_view.dart';
 import '../utils/url.dart';
 import 'fetcher.dart';
 
-class _TareasFetcher {
+class _TareasRepo {
   Future<ResFetch<List<TareaView>>> listaTareas(String token,
       {required ListaTareasQuery query}) async {
     final uri = URL(url, "/Tareas/ListaTareas", {
@@ -21,4 +21,4 @@ class _TareasFetcher {
   }
 }
 
-final tareasFetcher = _TareasFetcher();
+final tareasRepository = _TareasRepo();

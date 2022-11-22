@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../fetchers/tareas_fetcher.dart';
+import '../../../repositories/tareas_repository.dart';
 import '../../../models/params/lista_tareas_query.dart';
 import '../../../models/tarea_view.dart';
 
@@ -30,7 +30,7 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
     if (_loading) return;
     _loading = true;
 
-    var respuesta = await tareasFetcher.listaTareas(
+    var respuesta = await tareasRepository.listaTareas(
       "your_token",
       query: ListaTareasQuery(empresa: "you_empresa", pageNo: _pageNo),
     );
@@ -50,7 +50,7 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
     if (_loading) return;
     _loading = true;
 
-    var respuesta = await tareasFetcher.listaTareas(
+    var respuesta = await tareasRepository.listaTareas(
       "you_token",
       query: ListaTareasQuery(empresa: "you_empresa", pageNo: 0),
     );

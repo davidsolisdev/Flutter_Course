@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../fetchers/tareas_fetcher.dart';
+import '../../../repositories/tareas_repository.dart';
 import '../../../models/params/lista_tareas_query.dart';
 import '../../../models/tarea_view.dart';
 
@@ -7,7 +7,7 @@ class FutureBuilderW extends StatelessWidget {
   const FutureBuilderW({super.key});
 
   Future<List<TareaView>> _getData() async {
-    var peticion = await tareasFetcher.listaTareas("you_token",
+    var peticion = await tareasRepository.listaTareas("you_token",
         query: ListaTareasQuery(empresa: ""));
 
     if (peticion.status != 200) {

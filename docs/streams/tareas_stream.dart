@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../models/params/lista_tareas_query.dart';
-import '../fetchers/tareas_fetcher.dart';
+import '../repositories/tareas_repository.dart';
 import '../models/tarea_view.dart';
 
 class TareasStream {
@@ -28,7 +28,7 @@ class TareasStream {
     // set pageNo of the peticion
     query.pageNo = _pageListaTareas;
 
-    var respuesta = await tareasFetcher.listaTareas(token, query: query);
+    var respuesta = await tareasRepository.listaTareas(token, query: query);
     _loadingListaTareas = false;
 
     // return error of petition
@@ -54,7 +54,7 @@ class TareasStream {
     _loadingListaTareas = true;
 
     query.pageNo = 0;
-    var respuesta = await tareasFetcher.listaTareas(token, query: query);
+    var respuesta = await tareasRepository.listaTareas(token, query: query);
     _loadingListaTareas = false;
 
     // return error of petition
