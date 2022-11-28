@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import '../../../fetchers/tareas_fetcher.dart';
-import '../../../fetchers/params/lista_tareas_query.dart';
-=======
 import '../../../repositories/tareas_repository.dart';
-import '../../../models/params/lista_tareas_query.dart';
->>>>>>> 108422dd4ffa989c398dcecd7f26aa9dba2a91bb
+import '../../../repositories/params/lista_tareas_query.dart';
 import '../../../models/tarea_view.dart';
 
 class FutureBuilderW extends StatelessWidget {
