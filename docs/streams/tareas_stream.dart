@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../models/params/lista_tareas_query.dart';
+import '../fetchers/params/lista_tareas_query.dart';
 import '../fetchers/tareas_fetcher.dart';
 import '../models/tarea_view.dart';
 

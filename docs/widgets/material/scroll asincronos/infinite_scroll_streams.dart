@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../models/params/lista_tareas_query.dart';
+import '../../../fetchers/params/lista_tareas_query.dart';
 import '../../../models/tarea_view.dart';
 import '../../../streams/tareas_stream.dart';
 

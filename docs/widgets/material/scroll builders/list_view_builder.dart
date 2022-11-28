@@ -16,8 +16,7 @@ class ListViewBuilder extends StatelessWidget {
       controller: _controller, // controlador
       itemCount: _lista.length, // total de items
       scrollDirection: Axis.vertical, // direccion del scroll
-      reverse: false, // invertir la direccion del scroll
-
+      reverse: false, // invertir la direccion del Scroll,
       padding: const EdgeInsets.all(1.0),
       itemBuilder: (context, i) {
         return Text(" ${_lista[i].nombre}");

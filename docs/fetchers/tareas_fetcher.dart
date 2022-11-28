@@ -1,10 +1,10 @@
-import '../models/params/lista_tareas_query.dart';
+import 'params/lista_tareas_query.dart';
 import '../models/tarea_view.dart';
 import '../utils/url.dart';
 import 'fetcher.dart';
 
 class _TareasFetcher {
-  Future<ResFetch<List<TareaView>>> listaTareas(String token,
+  Future<RespFetch<List<TareaView>>> listaTareas(String token,
       {required ListaTareasQuery query}) async {
     final uri = URL(url, "/Tareas/ListaTareas", {
       "Empresa": query.empresa,
