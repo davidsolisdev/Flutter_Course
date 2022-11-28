@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import '../../../fetchers/tareas_fetcher.dart';
 import '../../../fetchers/params/lista_tareas_query.dart';
+=======
+import '../../../repositories/tareas_repository.dart';
+import '../../../models/params/lista_tareas_query.dart';
+>>>>>>> 108422dd4ffa989c398dcecd7f26aa9dba2a91bb
 import '../../../models/tarea_view.dart';
 
 class InfiniteScrollFutures extends StatefulWidget {
@@ -30,7 +35,7 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
     if (_loading) return;
     _loading = true;
 
-    var respuesta = await tareasFetcher.listaTareas(
+    var respuesta = await tareasRepository.listaTareas(
       "your_token",
       query: ListaTareasQuery(empresa: "you_empresa", pageNo: _pageNo),
     );
@@ -50,7 +55,7 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
     if (_loading) return;
     _loading = true;
 
-    var respuesta = await tareasFetcher.listaTareas(
+    var respuesta = await tareasRepository.listaTareas(
       "you_token",
       query: ListaTareasQuery(empresa: "you_empresa", pageNo: 0),
     );

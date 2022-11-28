@@ -1,7 +1,12 @@
 import 'dart:async';
 
+<<<<<<< HEAD
 import '../fetchers/params/lista_tareas_query.dart';
 import '../fetchers/tareas_fetcher.dart';
+=======
+import '../models/params/lista_tareas_query.dart';
+import '../repositories/tareas_repository.dart';
+>>>>>>> 108422dd4ffa989c398dcecd7f26aa9dba2a91bb
 import '../models/tarea_view.dart';
 
 class TareasStream {
@@ -28,7 +33,7 @@ class TareasStream {
     // set pageNo of the peticion
     query.pageNo = _pageListaTareas;
 
-    var respuesta = await tareasFetcher.listaTareas(token, query: query);
+    var respuesta = await tareasRepository.listaTareas(token, query: query);
     _loadingListaTareas = false;
 
     // return error of petition
@@ -54,7 +59,7 @@ class TareasStream {
     _loadingListaTareas = true;
 
     query.pageNo = 0;
-    var respuesta = await tareasFetcher.listaTareas(token, query: query);
+    var respuesta = await tareasRepository.listaTareas(token, query: query);
     _loadingListaTareas = false;
 
     // return error of petition
