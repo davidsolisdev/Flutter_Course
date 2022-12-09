@@ -3,8 +3,8 @@ import '../models/tarea_view.dart';
 import '../utils/url.dart';
 import 'fetcher.dart';
 
-class _TareasRepo {
-  Future<RespFetch<List<TareaView>>> listaTareas(String token,
+class TareasRepository {
+  static Future<RespFetch<List<TareaView>>> listaTareas(String token,
       {required ListaTareasQuery query}) async {
     final uri = URL(url, "/Tareas/ListaTareas", {
       "Empresa": query.empresa,
@@ -13,6 +13,7 @@ class _TareasRepo {
       "PageSize": query.pageSize,
       "PageNo": query.pageNo
     });
+
     return Fetcher.get<List<TareaView>>(
       uri,
       headers: {"Authorization": token},
@@ -20,5 +21,3 @@ class _TareasRepo {
     );
   }
 }
-
-final tareasRepository = _TareasRepo();

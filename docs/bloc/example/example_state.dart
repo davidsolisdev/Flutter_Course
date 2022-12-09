@@ -1,16 +1,19 @@
 part of './example_bloc.dart';
 
-@immutable
-abstract class ExampleState {
+class ExampleState {
+  const ExampleState(
+      {required this.theme, required this.login, required this.token});
+
   final String theme;
   final bool login;
   final String token;
 
-  const ExampleState({
-    required this.theme,
-    required this.login,
-    required this.token,
-  });
+  ExampleState copyWith({String? theme, bool? login, String? token}) =>
+      ExampleState(
+        theme: theme ?? this.theme,
+        login: login ?? this.login,
+        token: token ?? this.token,
+      );
 }
 
 class ExampleInitialState extends ExampleState {
@@ -19,18 +22,5 @@ class ExampleInitialState extends ExampleState {
           theme: "ligth",
           login: false,
           token: "",
-        );
-}
-
-class ExampleModifyState extends ExampleState {
-  ExampleModifyState(
-    ExampleState state, {
-    String? theme,
-    bool? login,
-    String? token,
-  }) : super(
-          theme: theme ?? state.theme,
-          login: login ?? state.login,
-          token: token ?? state.token,
         );
 }

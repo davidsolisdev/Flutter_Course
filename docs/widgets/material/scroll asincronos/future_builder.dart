@@ -7,7 +7,7 @@ class FutureBuilderW extends StatelessWidget {
   const FutureBuilderW({super.key});
 
   Future<List<TareaView>> _getData() async {
-    var peticion = await tareasRepository.listaTareas("you_token",
+    var peticion = await TareasRepository.listaTareas("you_token",
         query: ListaTareasQuery(empresa: ""));
 
     if (peticion.status != 200) {
@@ -24,9 +24,15 @@ class FutureBuilderW extends StatelessWidget {
       initialData: const <TareaView>[],
       builder: ((context, snapshot) {
         return snapshot.hasData
-            ? ListView(
-                children:
-                    snapshot.data!.map((t) => Text('${t.noTarea}')).toList(),
+            ? ListView.builder(
+                itemCount: snapshot.data!.length, // total de items
+                scrollDirection: Axis.vertical, // direccion del scroll
+                padding: const EdgeInsets.all(1.0),
+                itemBuilder: (context, i) {
+                  return Text(
+                    "Tarea ${snapshot.data![i].descripcionDeTarea}",
+                  );
+                },
               )
             : snapshot.hasError
                 ? const Center(child: Text('no hay datos'))

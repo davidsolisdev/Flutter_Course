@@ -28,7 +28,7 @@ class TareasStream {
     // set pageNo of the peticion
     query.pageNo = _pageListaTareas;
 
-    var respuesta = await tareasRepository.listaTareas(token, query: query);
+    var respuesta = await TareasRepository.listaTareas(token, query: query);
     _loadingListaTareas = false;
 
     // return error of petition
@@ -54,7 +54,7 @@ class TareasStream {
     _loadingListaTareas = true;
 
     query.pageNo = 0;
-    var respuesta = await tareasRepository.listaTareas(token, query: query);
+    var respuesta = await TareasRepository.listaTareas(token, query: query);
     _loadingListaTareas = false;
 
     // return error of petition

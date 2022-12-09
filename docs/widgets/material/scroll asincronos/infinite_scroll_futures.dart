@@ -26,11 +26,12 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
     }
   }
 
+  // * Metodos de obtencion de datos
   Future<void> _newLoad() async {
     if (_loading) return;
     _loading = true;
 
-    var respuesta = await tareasRepository.listaTareas(
+    var respuesta = await TareasRepository.listaTareas(
       "your_token",
       query: ListaTareasQuery(empresa: "you_empresa", pageNo: _pageNo),
     );
@@ -50,7 +51,7 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
     if (_loading) return;
     _loading = true;
 
-    var respuesta = await tareasRepository.listaTareas(
+    var respuesta = await TareasRepository.listaTareas(
       "you_token",
       query: ListaTareasQuery(empresa: "you_empresa", pageNo: 0),
     );

@@ -4,6 +4,7 @@ class ListaTareasQuery {
   final String descripcion;
   final int pageSize;
   int pageNo;
+
   ListaTareasQuery({
     required this.empresa,
     this.noTarea = 0,
