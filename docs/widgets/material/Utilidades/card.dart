@@ -8,7 +8,13 @@ class CardW extends StatelessWidget {
     return const Card(
       color: Colors.white,
       elevation: 1.0,
+      margin: EdgeInsets.all(4.0),
       shadowColor: Colors.black,
+      surfaceTintColor: Colors.amber,
+      shape: RoundedRectangleBorder(
+          //side: BorderSide(color: Colors.black), // color del borde
+          //borderRadius: BorderRadius.circular(20),
+          ),
       child: Text('hola'),
     );
   }

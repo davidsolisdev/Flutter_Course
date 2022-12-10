@@ -6,9 +6,14 @@ class AvatarCircular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CircleAvatar(
+      maxRadius: 50, // tamaño del avatar
+      minRadius: 20,
       backgroundImage: NetworkImage(''),
+      foregroundImage: NetworkImage(''), // se sobrepone a background
+      //onBackgroundImageError: (exception, stackTrace) {},
+      //onForegroundImageError: (exception, stackTrace) {},
       backgroundColor: Colors.amber,
-      //foregroundImage: /*aquí va el proveedor de la imagen*/ ,
+      foregroundColor: Colors.black, // color del texto
       child: Text('texto dentro'),
     );
   }

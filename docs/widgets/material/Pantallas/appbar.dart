@@ -6,13 +6,17 @@ class Appbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 4,
       backgroundColor: Colors.blue, // color de fondo
+      leadingWidth: 56.0,
       leading: IconButton(
-          // widget al inicio
-          icon: const Icon(Icons.tag_faces),
-          tooltip: 'ver bus',
-          onPressed: () {}),
+        // widget al inicio
+        icon: const Icon(Icons.tag_faces),
+        tooltip: 'ver bus',
+        onPressed: () {},
+      ),
       title: const Center(child: Text("Título página")), // título en el centro
+      centerTitle: true,
       actions: <Widget>[
         // widgets al final del appbar
         IconButton(icon: const Icon(Icons.directions_bike), onPressed: () {}),

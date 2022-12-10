@@ -13,6 +13,8 @@ class ButtomNavigationBarW extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: indexTab,
+      type: BottomNavigationBarType
+          .fixed, // OPCIONAL, cuado son más de 3 opciones
       elevation: 8.0,
       backgroundColor: Colors.blue[900],
       selectedItemColor: Colors.white,
@@ -27,10 +29,15 @@ class ButtomNavigationBarW extends StatelessWidget {
           icon: Icon(Icons.lock),
           label: 'Login',
           backgroundColor: Colors.white,
+          tooltip: 'login',
+          activeIcon: Icon(Icons.access_alarm),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
           label: 'Consulta',
+          backgroundColor: Colors.white,
+          tooltip: 'consulta',
+          activeIcon: Icon(Icons.access_alarm),
         ),
       ],
     );
