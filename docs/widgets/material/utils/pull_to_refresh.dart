@@ -13,6 +13,10 @@ class PullToRefresh extends StatelessWidget {
       onRefresh: getOnePage, //Debe ser un future que retorna null
       backgroundColor: Colors.black,
       color: Colors.blue,
+      displacement: 40.0, // distancia que puede bajar el refresh
+      strokeWidth: 2.0, // ancho del icono de recarga
+      triggerMode: RefreshIndicatorTriggerMode
+          .anywhere, // refrescar cuando se va desplazando y se pasa del principio
       child: ListView.builder(
         itemCount: _listaNumeros.length,
         itemBuilder: (BuildContext context, int index) {

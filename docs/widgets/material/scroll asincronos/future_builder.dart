@@ -23,20 +23,17 @@ class FutureBuilderW extends StatelessWidget {
       future: _getData(),
       initialData: const <TareaView>[],
       builder: ((context, snapshot) {
-        return snapshot.hasData
+        snapshot.connectionState == ConnectionState.waiting;
+        return snapshot.connectionState == ConnectionState.done
             ? ListView.builder(
                 itemCount: snapshot.data!.length, // total de items
-                scrollDirection: Axis.vertical, // direccion del scroll
-                padding: const EdgeInsets.all(1.0),
-                itemBuilder: (context, i) {
-                  return Text(
-                    "Tarea ${snapshot.data![i].descripcionDeTarea}",
-                  );
-                },
+                itemBuilder: (context, i) => Text(
+                  "Tarea ${snapshot.data![i].descripcionDeTarea}",
+                ),
               )
-            : snapshot.hasError
-                ? const Center(child: Text('no hay datos'))
-                : const CircularProgressIndicator.adaptive();
+            : snapshot.connectionState == ConnectionState.waiting
+                ? const CircularProgressIndicator.adaptive()
+                : const Center(child: Text('no hay datos'));
       }),
     );
   }

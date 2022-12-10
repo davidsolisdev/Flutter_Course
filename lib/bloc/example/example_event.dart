@@ -1,15 +1,18 @@
 part of './example_bloc.dart';
 
-abstract class ExampleEvent {}
+abstract class ExampleEvent {
+  const ExampleEvent({required this.lastState});
+
+  final ExampleState lastState;
+}
 
 class ChangeLogin extends ExampleEvent {
-  ExampleState lastState;
   bool login;
   String token;
 
-  ChangeLogin({
-    required this.lastState,
+  ChangeLogin(
+    ExampleState lastState, {
     required this.login,
     required this.token,
-  });
+  }) : super(lastState: lastState);
 }

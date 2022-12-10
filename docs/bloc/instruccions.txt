@@ -1,0 +1,28 @@
+// Ejecutar el siguiente comando 
+
+flutter pub add bloc flutter_bloc
+
+// Agregar la siguiente linea antes del padre de los elementos que deseemos que tengan acceso
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+MultiBlocProvider(
+  providers: [ BlocProvider<GlobalBloc>(create: (context) => GlobalBloc()) ], 
+  child: Container(),
+);
+
+// usar BlocBuilder para utilizar el estado de nuestro bloc
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+BlocBuilder<ExampleBloc, ExampleState>(
+    builder: (context, state) {
+        return Container();
+    }
+)
+
+// Emitir eventos para nuestro bloc
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+BlocProvider.of<ExampleBloc>(context, listen: false).add(const ExampleHandlerEvent());

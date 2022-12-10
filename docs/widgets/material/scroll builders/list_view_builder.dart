@@ -13,11 +13,14 @@ class ListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(), // ClampingScrollPhysics()
       controller: _controller, // controlador
       itemCount: _lista.length, // total de items
       scrollDirection: Axis.vertical, // direccion del scroll
       reverse: false, // invertir la direccion del Scroll,
       padding: const EdgeInsets.all(1.0),
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
+          .onDrag, // Desactivar el teclado al hacer scroll
       itemBuilder: (context, i) {
         return Text(" ${_lista[i].nombre}");
       },

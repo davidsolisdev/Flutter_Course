@@ -14,6 +14,7 @@ class App extends StatelessWidget {
       create: (context) => bloc,
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
         home: const HomePage(title: 'Flutter Demo Home Page'),
       ),

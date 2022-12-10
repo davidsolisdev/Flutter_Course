@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/global/global_bloc.dart';
+import 'ios_app.dart';
 
 class IosMain extends StatelessWidget {
   const IosMain({Key? key}) : super(key: key);

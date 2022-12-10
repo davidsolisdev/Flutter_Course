@@ -7,8 +7,7 @@ part './example_event.dart';
 class ExampleBloc extends Bloc<ExampleEvent, ExampleState> {
   ExampleBloc() : super(const ExampleInitialState()) {
     on<ChangeLogin>((event, emit) {
-      emit(ExampleModifyState(
-        event.lastState,
+      emit(event.lastState.copyWith(
         login: event.login,
         token: event.token,
       ));

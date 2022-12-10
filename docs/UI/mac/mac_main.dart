@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'mac_app.dart';
 import '../../bloc/global/global_bloc.dart';
 
 class MacOSMain extends StatelessWidget {

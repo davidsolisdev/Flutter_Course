@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'android_app.dart';
 import '../../bloc/global/global_bloc.dart';
 
 class AndroidMain extends StatelessWidget {

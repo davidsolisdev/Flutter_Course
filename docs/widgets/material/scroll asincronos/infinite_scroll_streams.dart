@@ -51,21 +51,19 @@ class _InfiniteScrollStreamsState extends State<InfiniteScrollStreams> {
         stream: _tareasStream.listaTareasStream,
         initialData: const <TareaView>[],
         builder: (context, snapshot) {
-          return snapshot.hasData
+          return snapshot.connectionState == ConnectionState.done
               ? ListView.builder(
                   controller: _controller, // controlador
                   itemCount: snapshot.data!.length, // total de items
-                  scrollDirection: Axis.vertical, // direccion del scroll
-                  padding: const EdgeInsets.all(1.0),
                   itemBuilder: (context, i) {
                     return Text(
                       "Tarea ${snapshot.data![i].descripcionDeTarea}",
                     );
                   },
                 )
-              : snapshot.hasError
-                  ? const Center(child: Text("No hay datos"))
-                  : const CircularProgressIndicator.adaptive();
+              : snapshot.connectionState == ConnectionState.waiting
+                  ? const CircularProgressIndicator.adaptive()
+                  : const Center(child: Text("No hay datos"));
         },
       ),
     );

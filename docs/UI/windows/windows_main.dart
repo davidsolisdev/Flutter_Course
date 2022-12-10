@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'windows_app.dart';
 import '../../bloc/global/global_bloc.dart';
 
 class WindowsMain extends StatelessWidget {

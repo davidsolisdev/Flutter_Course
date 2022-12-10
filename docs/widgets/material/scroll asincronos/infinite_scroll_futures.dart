@@ -90,8 +90,6 @@ class _InfiniteScrollFuturesState extends State<InfiniteScrollFutures> {
       child: ListView.builder(
         controller: _controller, // controlador
         itemCount: _lista.length, // total de items
-        scrollDirection: Axis.vertical, // direccion del scroll
-        padding: const EdgeInsets.all(1.0),
         itemBuilder: (context, i) {
           return Text("Tarea ${_lista[i].descripcionDeTarea}");
         },

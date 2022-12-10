@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'linux_app.dart';
 import '../../bloc/global/global_bloc.dart';
 
-class AndroidMain extends StatelessWidget {
-  const AndroidMain({Key? key}) : super(key: key);
+class LinuxMain extends StatelessWidget {
+  const LinuxMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
