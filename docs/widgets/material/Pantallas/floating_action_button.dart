@@ -9,6 +9,7 @@ class Floatingactionbutton extends StatelessWidget {
       backgroundColor: Colors.black, // color del botón
       splashColor: Colors.blue, // color de splash al ser presionado
       mini: false, // hacer el botón más pequeño
+      elevation: 6.0,
       tooltip: 'foto', // mensaje de ayuda al hacer Long Press
       onPressed: () {}, //Lo que se ejecuta al presionar
       child:

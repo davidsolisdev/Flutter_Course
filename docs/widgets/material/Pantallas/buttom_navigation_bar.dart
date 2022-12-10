@@ -17,12 +17,16 @@ class ButtomNavigationBarW extends StatelessWidget {
           .fixed, // OPCIONAL, cuado son más de 3 opciones
       elevation: 8.0,
       backgroundColor: Colors.blue[900],
+      iconSize: 24.0,
+      // * mostrar labels
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      // * font size label
+      selectedFontSize: 14.0,
+      unselectedFontSize: 12.0,
+      // * color icons
       selectedItemColor: Colors.white,
-      selectedLabelStyle: const TextStyle(fontSize: 12, color: Colors.white),
-      selectedIconTheme: const IconThemeData(color: Colors.white, size: 18),
       unselectedItemColor: Colors.grey,
-      unselectedLabelStyle: const TextStyle(fontSize: 10, color: Colors.grey),
-      unselectedIconTheme: const IconThemeData(color: Colors.grey, size: 18),
       onTap: (int newIndex) => changeCurrentTab(newIndex),
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -40,6 +44,10 @@ class ButtomNavigationBarW extends StatelessWidget {
           activeIcon: Icon(Icons.access_alarm),
         ),
       ],
+      //selectedLabelStyle: const TextStyle(fontSize: 12, color: Colors.white),
+      //unselectedLabelStyle: const TextStyle(fontSize: 10, color: Colors.grey),
+      //selectedIconTheme: const IconThemeData(color: Colors.white, size: 18),
+      //unselectedIconTheme: const IconThemeData(color: Colors.grey, size: 18),
     );
   }
 }
