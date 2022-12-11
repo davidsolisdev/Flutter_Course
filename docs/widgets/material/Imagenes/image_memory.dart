@@ -21,6 +21,12 @@ class ImageMemory extends StatelessWidget {
       width: 100,
       height: 100,
       semanticLabel: 'Texto de accesibilidad',
+      loadingBuilder: (context, child, loadingProgress) {
+        return Container();
+      },
+      errorBuilder: (context, error, stackTrace) {
+        return Container();
+      },
     );
   }
 }
@@ -32,6 +38,18 @@ class ImageMemoryW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.memory(imagen);
+    return Image.memory(
+      imagen,
+      alignment: Alignment.center,
+      fit: BoxFit.cover,
+      repeat: ImageRepeat.noRepeat,
+      scale: 1.0,
+      width: 100,
+      height: 100,
+      semanticLabel: 'Texto de accesibilidad',
+      errorBuilder: (context, error, stackTrace) {
+        return Container();
+      },
+    );
   }
 }

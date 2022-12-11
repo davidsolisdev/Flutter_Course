@@ -9,16 +9,20 @@ class RadioW extends StatefulWidget {
 
 class _RadioWState extends State<RadioW> {
   int _radioVal = 0;
+  final List<int> _items = [0, 1, 2, 3];
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [0, 1, 2, 3]
-          .map((int index) => Radio<int>(
-                value: index,
+      children: _items
+          .map((int val) => Radio<int>(
+                value: val,
                 groupValue: _radioVal, //valor central de todos, (select)
+                //activeColor: Colors.amber,
+                //splashRadius: 20,
                 onChanged: (int? value) {
-                  setState(() => _radioVal = value!);
+                  _radioVal = value!;
+                  setState(() {});
                 },
               ))
           .toList(),

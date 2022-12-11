@@ -20,10 +20,7 @@ class Appbar extends StatelessWidget {
       actions: <Widget>[
         // widgets al final del appbar
         IconButton(icon: const Icon(Icons.directions_bike), onPressed: () {}),
-        IconButton(
-            icon: const Icon(Icons.directions_bus),
-            tooltip: 'ver bus',
-            onPressed: () {}),
+        IconButton(icon: const Icon(Icons.directions_bus), onPressed: () {}),
         PopupMenuButton(
           itemBuilder: (BuildContext context) {
             return const <PopupMenuItem>[

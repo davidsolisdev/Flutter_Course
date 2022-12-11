@@ -12,8 +12,7 @@ class Floatingactionbutton extends StatelessWidget {
       elevation: 6.0,
       tooltip: 'foto', // mensaje de ayuda al hacer Long Press
       onPressed: () {}, //Lo que se ejecuta al presionar
-      child:
-          const Icon(Icons.add_a_photo), //recibe un hijo, en este caso un icono
+      child: const Icon(Icons.add_a_photo),
     );
   }
 }

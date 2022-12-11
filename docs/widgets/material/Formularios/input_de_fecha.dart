@@ -2,12 +2,12 @@
  * Primero colocamos esto en el pubspec.yaml
  *  flutter_localizations:
  *    sdk: flutter
- */
+*/
 
 /*
  * Importamos este paquete en el main.dart
  *  import 'package:flutter_localizations/flutter_localizations.dart';
- */
+*/
 
 /*
  * 
@@ -18,11 +18,10 @@
  *    GlobalCupertinoLocalizations.delegate,
  *  ],
  *  supportedLocales: [
- *    const Locale('en', ''),
+ *    const Locale('en', 'US'),
  *    const Locale('es', 'ES'),
  *  ],
- * 
- */
+*/
 
 import 'package:flutter/material.dart';
 
@@ -34,36 +33,33 @@ class InputFecha extends StatefulWidget {
 }
 
 class _InputFechaState extends State<InputFecha> {
-  String fecha = "";
+  final _fechaActual = DateTime.now();
+  late DateTime fecha;
   late TextEditingController controllerInput;
 
   @override
   void initState() {
     super.initState();
-
-    controllerInput = TextEditingController(text: fecha);
+    fecha = DateTime(_fechaActual.year, _fechaActual.month, _fechaActual.day);
+    controllerInput = TextEditingController(text: fecha.toString());
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controllerInput,
-      onTap: () async {
-        FocusScope.of(context).requestFocus(FocusNode());
-        DateTime? picked = await showDatePicker(
-          context: context,
-          initialDate: DateTime.now(),
-          firstDate: DateTime(2018),
-          lastDate: DateTime(2025),
-          locale: const Locale('es', 'ES'),
-        );
+        controller: controllerInput,
+        onTap: () async {
+          FocusScope.of(context).requestFocus(FocusNode());
+          DateTime? picked = await showDatePicker(
+            context: context,
+            initialDate: fecha,
+            firstDate: DateTime(2018),
+            lastDate: DateTime(2025),
+            locale: const Locale('es', 'ES'),
+          );
 
-        if (picked != null) {
-          setState(() {
-            fecha = picked.toString();
-          });
-        }
-      },
-    );
+          if (picked == null) return;
+          setState(() => fecha = picked);
+        });
   }
 }

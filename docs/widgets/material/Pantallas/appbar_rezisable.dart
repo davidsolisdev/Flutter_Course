@@ -19,13 +19,13 @@ class AppbarRezisable extends StatelessWidget {
           elevation: 4,
           backgroundColor: Colors.blue,
           centerTitle: true,
-          title: const Text('Titulo'),
+          //title: const Text('Titulo'), // titulo arriba
           actions: const <Widget>[],
           flexibleSpace: FlexibleSpaceBar(
-            title: const Text("Título de la página"),
+            title: const Text("Título de la página"), // titulo abajo
             centerTitle: true,
             titlePadding:
-                const EdgeInsetsDirectional.only(start: 72, bottom: 16),
+                const EdgeInsetsDirectional.only(start: 0, bottom: 16),
             background: Image.network(
               'https://i.blogs.es/594843/chrome/450_1000.jpg',
               fit: BoxFit.fill,

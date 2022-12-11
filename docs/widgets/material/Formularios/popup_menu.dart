@@ -8,37 +8,35 @@ class PopupMenuW extends StatefulWidget {
 }
 
 class _PopupMenuWState extends State<PopupMenuW> {
-  String _selectedVal = '';
+  String? _selectedVal;
   List<String> menuItems = ['', ''];
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      itemBuilder: (BuildContext context) => _popUpMenuItems(), // Listado
+      itemBuilder: (context) => _popUpMenuItems(),
       initialValue: _selectedVal,
       tooltip: '',
+      enabled: true,
+      elevation: 8,
+      color: Colors.amber, // color de fondo lista items
+      //splashRadius: 20,
+      padding: const EdgeInsets.all(8.0),
+      iconSize: 24.0,
+      //icon: const Icon(Icons.ac_unit),
+      //child: Container(), // reemplaza el icono
+      onCanceled: () {},
       onSelected: (String newValue) {
-        //accion al seleccionar un item
         _selectedVal = newValue; //setear la nueva opción
         ScaffoldMessenger.of(context).showSnackBar(
-          //mostramos un snackBar
-          const SnackBar(
-            //con la opción seleccionada
-            content: Text(''),
-          ),
+          SnackBar(content: Text(newValue)),
         );
       },
     );
   }
 
-  List<PopupMenuItem<String>> _popUpMenuItems() {
-    return menuItems
-        .map(
-          (String value) => PopupMenuItem<String>(
-            value: value,
-            child: Text(value),
-          ),
-        )
-        .toList();
-  }
+  List<PopupMenuItem<String>> _popUpMenuItems() => menuItems
+      .map((String value) =>
+          PopupMenuItem<String>(value: value, child: Text(value)))
+      .toList();
 }

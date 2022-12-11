@@ -8,20 +8,25 @@ class DropdownW extends StatefulWidget {
 }
 
 class _DropdownWState extends State<DropdownW> {
-  String _opcionSeleccionada = '';
+  String? _opcionSeleccionada;
   List<String> poderes = ['volar', 'rayos laser'];
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: _opcionSeleccionada,
+      value: _opcionSeleccionada ?? poderes[0],
       items: getOpcionesDropdown(),
-      hint: const Text('Elige una opción'),
+      alignment: Alignment.center, // alineacion del item selecionado
+      underline: Container(height: 2, color: Colors.blue),
+      dropdownColor: Colors.amber, // color de fondo lista items
+      elevation: 8,
+      isExpanded: false,
+      hint: const Text('Elige una opción'), // placeholder
+      //icon: const Icon(Icons.ac_unit), // icono de despliegue
+      //style: const TextStyle(), // estilos de los textos
       onChanged: (String? opt) {
-        // al seleccionar otra opcion
-        setState(() {
-          _opcionSeleccionada = opt!;
-        });
+        _opcionSeleccionada = opt!;
+        setState(() {});
       },
     );
   }

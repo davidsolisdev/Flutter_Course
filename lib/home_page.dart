@@ -14,44 +14,57 @@ class _HomePageState extends State<HomePage> {
 
   final List<String> _items = ['Uno', 'Dos', 'Tres'];
 
+  String? value;
+  late TextEditingController controllerI;
+
+  @override
+  void initState() {
+    super.initState();
+    controllerI = TextEditingController(text: value);
+  }
+
+  final InputDecoration _decoration = const InputDecoration(
+    counter: Text('letras 0'), // texto a la derecha debajo del input
+    hintText: 'soy el placeholder del input', // placeholder
+    labelText: 'nombre', // Nombre del input en forma de string
+    //label: const Text(''), // Nombre del input en forma de widget
+    helperText: 'texto de ayuda abajo del input', // Texto abajo string
+    icon: Icon(Icons.ac_unit), // icono al inicio
+    suffixIcon: Icon(Icons.add), // icono al final
+    border: UnderlineInputBorder(),
+    floatingLabelBehavior: FloatingLabelBehavior.auto, // label arriba
+    alignLabelWithHint: false, // el label se coloca en el espacio del texto
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: false, // determina si el appbar desaparece al hacer scroll
-            snap: false,
-            floating: false,
-            expandedHeight: 160.0,
-            centerTitle: true,
-            actions: const <Widget>[],
-            title: const Text('Titulo'),
-            flexibleSpace: FlexibleSpaceBar(
-              title: const Text("Título de la página"),
-              centerTitle: true,
-              titlePadding:
-                  const EdgeInsetsDirectional.only(start: 72, bottom: 16),
-              background: Image.network(
-                'https://i.blogs.es/594843/chrome/450_1000.jpg',
-                fit: BoxFit.fill,
-              ),
+      appBar: AppBar(title: const Text('Home')),
+      body: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: ListView(
+          children: [
+            Container(
+              height: 50,
             ),
-            elevation: 4,
-            backgroundColor: Colors.blue,
-          ),
-          SliverList(
-            //Body de la pagina, es un listview
-            delegate: SliverChildListDelegate([
-              const Center(child: Text('data')),
-              const Center(child: Text('data')),
-              Container(
-                height: 1000,
-                color: Colors.purple,
-              )
-            ]),
-          ),
-        ],
+            TextField(
+              //controller: controllerI,
+              keyboardType: TextInputType.text,
+              autocorrect: false, // habilitar el autocorrector
+              textCapitalization: TextCapitalization.sentences, //cada palabra
+              enableSuggestions: true,
+              decoration: _decoration,
+              onChanged: (String valor) {
+                value = valor;
+              },
+            )
+          ],
+        ),
       ),
     );
   }
