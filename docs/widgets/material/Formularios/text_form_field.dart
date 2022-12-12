@@ -70,6 +70,7 @@ class _TextFormFieldWState extends State<TextFormFieldW> {
     icon: const Icon(Icons.ac_unit), // icono fuera, al inicio
     prefixIcon: const Icon(Icons.access_alarm), // icono al inicio
     suffixIcon: const Icon(Icons.add), // icono al final
+    filled: true, // input filled, normalmente cuando es UnderlineInputBorder()
     border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.0)), // UnderlineInputBorder()
     alignLabelWithHint: true, // el label se coloca en el espacio del texto

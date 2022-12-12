@@ -34,7 +34,8 @@ class InputFecha extends StatefulWidget {
 
 class _InputFechaState extends State<InputFecha> {
   final TextEditingController _controllerInput = TextEditingController();
-  DateTime? _fecha;
+  final DateTime _fechaActual = DateTime.now();
+  DateTimeRange? _rangoFechas;
 
   @override
   Widget build(BuildContext context) {
@@ -43,30 +44,36 @@ class _InputFechaState extends State<InputFecha> {
       readOnly: true,
       decoration: _decoration,
       onTap: () async {
-        DateTime? picked = await showDatePicker(
+        DateTimeRange? picked = await showDateRangePicker(
           context: context,
-          initialDate: _fecha ?? DateTime.now(),
+          initialDateRange: _rangoFechas ??
+              DateTimeRange(start: _fechaActual, end: _fechaActual),
           firstDate: DateTime(2018),
           lastDate: DateTime(2025),
           locale: const Locale('es', 'ES'),
-          initialDatePickerMode: DatePickerMode.day,
+          initialEntryMode: DatePickerEntryMode.calendar,
+          //saveText: '',
           //confirmText: '',
           //cancelText: '',
+          //errorInvalidRangeText: '',
+          //errorInvalidText: '',
+          //errorFormatText: '',
         );
 
         if (picked == null) return;
-        _fecha = picked;
+        _rangoFechas = picked;
         _controllerInput.value = TextEditingValue(
-          text: '${picked.day}/${picked.month}/${picked.year}',
+          text:
+              '${picked.start.day}/${picked.start.month}/${picked.start.year} - ${picked.end.day}/${picked.end.month}/${picked.end.year}',
         );
       },
     );
   }
 
   final InputDecoration _decoration = const InputDecoration(
-    hintText: 'Selecciona la Fecha',
+    hintText: 'Selecciona el Rango de Fecha',
     floatingLabelBehavior: FloatingLabelBehavior.auto,
-    labelText: 'Fecha',
+    labelText: 'Rango de Fechas',
     prefixIcon: Icon(Icons.calendar_month),
     border: OutlineInputBorder(), // UnderlineInputBorder()
     alignLabelWithHint: true,

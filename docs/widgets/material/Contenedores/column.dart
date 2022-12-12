@@ -9,6 +9,7 @@ class ColumnW extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween, // alineacion vertical
       crossAxisAlignment: CrossAxisAlignment.center, //align items horizontal
       verticalDirection: VerticalDirection.down, // hacia dónde term list
+      //textDirection: TextDirection.ltr,
       children: const <Widget>[
         Text('hola'),
         Divider(),

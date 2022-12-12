@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BotonNormal extends StatelessWidget {
-  const BotonNormal({Key? key}) : super(key: key);
+  BotonNormal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,13 +9,15 @@ class BotonNormal extends StatelessWidget {
       autofocus: false,
       onPressed: () {},
       onLongPress: () {},
-      style: ElevatedButton.styleFrom(
-        primary: Colors.black,
-        onPrimary: Colors.white,
-        maximumSize: const Size(double.infinity, 35),
-        minimumSize: const Size(double.infinity, 35),
-      ),
+      style: _style,
       child: const Text('hola'),
     );
   }
+
+  final ButtonStyle _style = ElevatedButton.styleFrom(
+    backgroundColor: Colors.black,
+    foregroundColor: Colors.white,
+    maximumSize: const Size(double.infinity, 35),
+    minimumSize: const Size(double.infinity, 35),
+  );
 }

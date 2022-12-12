@@ -21,6 +21,8 @@ class ListViewBuilder extends StatelessWidget {
       padding: const EdgeInsets.all(1.0),
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
           .onDrag, // Desactivar el teclado al hacer scroll
+      shrinkWrap:
+          false, // si es true, toma todo el espacio de la pantalla aunque la lista no ocupe todo
       itemBuilder: (context, i) {
         return Text(" ${_lista[i].nombre}");
       },

@@ -8,6 +8,12 @@ class WrapW extends StatelessWidget {
     return Wrap(
       spacing: 8.0, // espacio horizontal
       runSpacing: 4.0, // espacio vertical
+      direction: Axis.horizontal,
+      alignment: WrapAlignment.start, // alineacion horizantal
+      runAlignment: WrapAlignment.start, // alineacion vertical
+      crossAxisAlignment: WrapCrossAlignment.start,
+      verticalDirection: VerticalDirection.down,
+      //textDirection: TextDirection.ltr,
       children: <Widget>[
         Chip(
           avatar: CircleAvatar(

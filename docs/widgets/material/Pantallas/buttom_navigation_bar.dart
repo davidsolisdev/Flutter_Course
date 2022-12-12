@@ -6,8 +6,7 @@ class ButtomNavigationBarW extends StatelessWidget {
       : super(key: key);
 
   final int indexTab;
-
-  final void Function(int currentTab) changeCurrentTab;
+  final void Function(int newIndex) changeCurrentTab;
 
   @override
   Widget build(BuildContext context) {
@@ -28,26 +27,28 @@ class ButtomNavigationBarW extends StatelessWidget {
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.grey,
       onTap: (int newIndex) => changeCurrentTab(newIndex),
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.lock),
-          label: 'Login',
-          backgroundColor: Colors.white,
-          tooltip: 'login',
-          activeIcon: Icon(Icons.access_alarm),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Consulta',
-          backgroundColor: Colors.white,
-          tooltip: 'consulta',
-          activeIcon: Icon(Icons.access_alarm),
-        ),
-      ],
+      items: _items,
       //selectedLabelStyle: const TextStyle(fontSize: 12, color: Colors.white),
       //unselectedLabelStyle: const TextStyle(fontSize: 10, color: Colors.grey),
       //selectedIconTheme: const IconThemeData(color: Colors.white, size: 18),
       //unselectedIconTheme: const IconThemeData(color: Colors.grey, size: 18),
     );
   }
+
+  final _items = const <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+      icon: Icon(Icons.lock),
+      label: 'Login',
+      backgroundColor: Colors.white,
+      tooltip: 'login',
+      activeIcon: Icon(Icons.access_alarm),
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.search),
+      label: 'Consulta',
+      backgroundColor: Colors.white,
+      tooltip: 'consulta',
+      activeIcon: Icon(Icons.access_alarm),
+    ),
+  ];
 }

@@ -8,8 +8,8 @@ class CenterW extends StatelessWidget {
     double height = MediaQuery.of(context).size.height * 0.3;
 
     return Center(
-      heightFactor: height,
       widthFactor: double.infinity,
+      heightFactor: height,
       child: const Text('Centrado'),
     );
   }

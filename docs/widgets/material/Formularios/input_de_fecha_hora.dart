@@ -35,6 +35,7 @@ class InputFecha extends StatefulWidget {
 class _InputFechaState extends State<InputFecha> {
   final TextEditingController _controllerInput = TextEditingController();
   DateTime? _fecha;
+  TimeOfDay? _time;
 
   @override
   Widget build(BuildContext context) {
@@ -43,30 +44,50 @@ class _InputFechaState extends State<InputFecha> {
       readOnly: true,
       decoration: _decoration,
       onTap: () async {
-        DateTime? picked = await showDatePicker(
-          context: context,
-          initialDate: _fecha ?? DateTime.now(),
-          firstDate: DateTime(2018),
-          lastDate: DateTime(2025),
-          locale: const Locale('es', 'ES'),
-          initialDatePickerMode: DatePickerMode.day,
-          //confirmText: '',
-          //cancelText: '',
+        // * GET DATE
+        DateTime? pickedDate = await _showPickerDate();
+        if (pickedDate == null) return;
+
+        _fecha = pickedDate;
+        _controllerInput.value = TextEditingValue(
+          text: '${pickedDate.day}/${pickedDate.month}/${pickedDate.year}',
         );
 
-        if (picked == null) return;
-        _fecha = picked;
+        // * GET TIME
+        TimeOfDay? pickedTime = await _showPickerTime();
+        if (pickedTime == null) return;
+
+        _time = pickedTime;
         _controllerInput.value = TextEditingValue(
-          text: '${picked.day}/${picked.month}/${picked.year}',
+          text:
+              '${_controllerInput.value.text} ${pickedTime.hour.toString().padLeft(2, '0')}:${pickedTime.minute.toString().padLeft(2, '0')}',
         );
       },
     );
   }
 
+  Future<DateTime?> _showPickerDate() async => await showDatePicker(
+        context: context,
+        initialDate: _fecha ?? DateTime.now(),
+        firstDate: DateTime(2018),
+        lastDate: DateTime(2025),
+        locale: const Locale('es', 'ES'),
+        initialDatePickerMode: DatePickerMode.day,
+        //confirmText: '',
+        //cancelText: '',
+      );
+
+  Future<TimeOfDay?> _showPickerTime() async => await showTimePicker(
+        context: context,
+        initialTime: _time ?? TimeOfDay.now(),
+        //confirmText: '',
+        //cancelText: '',
+      );
+
   final InputDecoration _decoration = const InputDecoration(
-    hintText: 'Selecciona la Fecha',
+    hintText: 'Selecciona Fecha y hora',
     floatingLabelBehavior: FloatingLabelBehavior.auto,
-    labelText: 'Fecha',
+    labelText: 'Fecha y hora',
     prefixIcon: Icon(Icons.calendar_month),
     border: OutlineInputBorder(), // UnderlineInputBorder()
     alignLabelWithHint: true,

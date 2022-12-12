@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Inputs extends StatefulWidget {
-  const Inputs({Key? key}) : super(key: key);
+class BorderLessTextField extends StatelessWidget {
+  BorderLessTextField({Key? key}) : super(key: key);
 
-  @override
-  State<Inputs> createState() => _InputsState();
-}
-
-class _InputsState extends State<Inputs> {
   final TextEditingController _controllerI = TextEditingController();
 
   @override
@@ -38,35 +33,9 @@ class _InputsState extends State<Inputs> {
     );
   }
 
-  final InputDecoration _decoration = InputDecoration(
-    counter: const Text('letras 0'), // texto a la derecha debajo del input
+  final InputDecoration _decoration = const InputDecoration.collapsed(
     hintText: 'soy el placeholder del input', // placeholder
     floatingLabelBehavior: FloatingLabelBehavior.always, // label arriba
-    labelText: 'nombre', // Nombre del input en forma de string
     //label: const Text(''), // Nombre del input en forma de widget
-    helperText: 'texto de ayuda abajo del input', // Texto abajo string
-    icon: const Icon(Icons.ac_unit), // icono fuera, al inicio
-    prefixIcon: const Icon(Icons.access_alarm), // icono al inicio
-    suffixIcon: const Icon(Icons.add), // icono al final
-    border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20.0)), // UnderlineInputBorder()
-    alignLabelWithHint: true, // el label se coloca en el espacio del texto
   );
 }
-
-// * Quitar el focus del campo al hacer tap fuera
-
-//GestureDetector(
-//  onTap: () {
-//    FocusScopeNode currentFocus = FocusScope.of(context);
-//   if (!currentFocus.hasPrimaryFocus) {
-//      currentFocus.unfocus();
-//    }
-//  },
-//  child: ListView(
-//   children: [
-//      Container(height: 50),
-//      TextField()
-//    ],
-//  ),
-//);

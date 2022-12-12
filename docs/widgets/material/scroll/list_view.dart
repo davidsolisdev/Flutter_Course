@@ -15,6 +15,8 @@ class ListViewW extends StatelessWidget {
       reverse: false, // invertir la direccion para hacer Scroll,
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior
           .onDrag, // Desactivar el teclado al hacer scroll
+      shrinkWrap:
+          false, // si es true, toma todo el espacio de la pantalla aunque la lista no ocupe todo
       children: const <Widget>[],
     );
   }

@@ -8,6 +8,8 @@ class RowW extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center, //align items horizontal
       mainAxisAlignment: MainAxisAlignment.center, // align items vertical
+      verticalDirection: VerticalDirection.down,
+      //textDirection: TextDirection.ltr,
       children: const <Widget>[
         Text('hola'),
         Text('qué tal'),
