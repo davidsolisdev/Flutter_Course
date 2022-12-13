@@ -10,12 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final ScrollController _controller = ScrollController();
-
-  final List<String> _items = ['Uno', 'Dos', 'Tres'];
-
-  final TextEditingController _controllerInput = TextEditingController();
-
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -32,9 +26,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: ListView(
           children: [
-            Container(
-              height: 50,
-            ),
+            Container(height: 50),
           ],
         ),
       ),
