@@ -1,3 +1,6 @@
+/*
+* flutter pub add sqflite 
+*/
 import 'package:path/path.dart';
 import 'package:flutter/services.dart' show rootBundle;
 

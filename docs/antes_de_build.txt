@@ -1,0 +1,12 @@
+Añadir permisos de internet a android
+Todos los permisos los pondremos aqui:
+
+android/app/src/main/AndroidManifest.xml
+
+<manifest>
+    <application>
+        ...
+        <uses-permission android:name="android.permission.INTERNET"/>
+    </application>
+</manifest>
+
