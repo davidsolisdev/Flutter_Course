@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 const TabPageSelector(),
                 Expanded(
-                  child: Container(child: TabBarView(children: _pages)),
+                  child: TabBarView(children: _pages),
                 ),
                 ElevatedButton(
                   onPressed: () {
