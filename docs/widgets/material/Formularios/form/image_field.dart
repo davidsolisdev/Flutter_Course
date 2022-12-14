@@ -1,18 +1,15 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../providers/image_picker_provider.dart';
+import 'bloc/form_bloc.dart';
 
 class ImageField extends StatefulWidget {
-  ImageField({
-    required this.image,
-    required this.widthImage,
-    required this.heightImage,
-    super.key,
-  });
+  const ImageField(
+      {required this.widthImage, required this.heightImage, super.key});
 
-  XFile? image;
   final double widthImage;
   final double heightImage;
 
@@ -25,6 +22,8 @@ class _ImageFieldState extends State<ImageField> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<FormBloc>(context, listen: true);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -46,7 +45,7 @@ class _ImageFieldState extends State<ImageField> {
           onPressed: () async {
             XFile? picked = await ImagePickerProvider.getImageFromGallery();
             if (picked != null) setState(() => _image = picked);
-            widget.image = picked;
+            bloc.add(ChangeFormValue(bloc.state, image: picked));
           },
           icon: const Icon(Icons.camera_alt_outlined),
           label: const Text('Elegir foto'),

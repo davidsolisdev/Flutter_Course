@@ -32,6 +32,7 @@ class _TextFormFieldWState extends State<TextFormFieldW> {
         maxLength: 10,
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
+        toolbarOptions: _toolBarOptions,
         //minLines: 1,
         maxLines: 1,
         obscureText: true, //inputs de contraseña, vuelve puntos las letras
@@ -59,6 +60,13 @@ class _TextFormFieldWState extends State<TextFormFieldW> {
       ),
     );
   }
+
+  final _toolBarOptions = const ToolbarOptions(
+    copy: true,
+    cut: true,
+    paste: true,
+    selectAll: true,
+  );
 
   final InputDecoration _decoration = InputDecoration(
     counter: const Text('letras 0'), // texto a la derecha debajo del input

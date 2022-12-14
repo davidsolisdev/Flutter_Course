@@ -1,18 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../providers/image_picker_provider.dart';
+import 'bloc/form_bloc.dart';
 
 class ImagesField extends StatefulWidget {
-  ImagesField({
-    required this.listImages,
+  const ImagesField({
     required this.widthImage,
     required this.heightImage,
     super.key,
   });
 
-  List<XFile> listImages;
   final double widthImage;
   final double heightImage;
 
@@ -25,6 +25,8 @@ class _ImagesFieldState extends State<ImagesField> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<FormBloc>(context, listen: true);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -57,7 +59,7 @@ class _ImagesFieldState extends State<ImagesField> {
             List<XFile> picked =
                 await ImagePickerProvider.getMultipleImagesFromGallery();
             if (picked.isNotEmpty) setState(() => _images = picked);
-            widget.listImages = picked;
+            bloc.add(ChangeFormValue(bloc.state, listImages: picked));
           },
           icon: const Icon(Icons.camera_alt_outlined),
           label: const Text('Elegir fotos'),
