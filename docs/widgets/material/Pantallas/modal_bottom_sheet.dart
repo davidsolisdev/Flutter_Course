@@ -6,8 +6,10 @@ class ModalBottomSheetW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => showModalBottomSheet(
-          context: context, builder: (ctx) => _buildBottomSheet(ctx)),
+      onPressed: () async {
+        String? response = await showModalBottomSheet<String?>(
+            context: context, builder: (ctx) => _buildBottomSheet(ctx));
+      },
       child: const Text('show modal bottom sheet'),
     );
   }
@@ -35,7 +37,7 @@ class ModalBottomSheetW extends StatelessWidget {
               child: ElevatedButton.icon(
                 icon: const Icon(Icons.save),
                 label: const Text('Save and close'),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.pop(context, "valor_retorno"),
               ),
             )
           ],

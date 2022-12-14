@@ -10,69 +10,54 @@
 * <key>NSMicrophoneUsageDescription</key>
 * <string>Sube tus videos</string>
 */
-import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerProvider {
-  static Future<File?> getImageFromGallery() async {
-    XFile? pickedFile = await ImagePicker().pickImage(
+  static Future<XFile?> getImageFromGallery() async {
+    return await ImagePicker().pickImage(
       source: ImageSource.gallery,
       requestFullMetadata: true,
       //maxWidth: 1800,
       //maxHeight: 1800,
     );
-
-    if (pickedFile != null) return File(pickedFile.path);
-    return null;
   }
 
-  static Future<File?> getImageFromCamera() async {
-    XFile? pickedFile = await ImagePicker().pickImage(
+  static Future<XFile?> getImageFromCamera() async {
+    return await ImagePicker().pickImage(
       source: ImageSource.camera,
       requestFullMetadata: true,
       preferredCameraDevice: CameraDevice.rear,
       //maxWidth: 1800,
       //maxHeight: 1800,
     );
-
-    if (pickedFile != null) return File(pickedFile.path);
-    return null;
   }
 
-  static Future<List<File?>> getMultipleImagesFromGallery() async {
-    List<XFile?> pickedFiles = await ImagePicker().pickMultiImage(
+  static Future<List<XFile>> getMultipleImagesFromGallery() async {
+    List<XFile?> picked = await ImagePicker().pickMultiImage(
       maxWidth: 1800,
       maxHeight: 1800,
       requestFullMetadata: true,
     );
 
-    List<File> lista = [];
-    if (pickedFiles.isNotEmpty) {
-      pickedFiles.map((pF) {
-        if (pF != null) lista.add(File(pF.path));
-      });
+    List<XFile> lista = [];
+    for (var i = 0; i < picked.length; i++) {
+      if (picked[i] != null) lista.add(picked[i]!);
     }
     return lista;
   }
 
-  static Future<File?> getVideoFromGallery() async {
-    XFile? pickedFile = await ImagePicker().pickVideo(
+  static Future<XFile?> getVideoFromGallery() async {
+    return await ImagePicker().pickVideo(
       source: ImageSource.gallery,
       maxDuration: const Duration(hours: 1),
     );
-
-    if (pickedFile != null) return File(pickedFile.path);
-    return null;
   }
 
-  static Future<File?> getVideoFromCamera() async {
-    XFile? pickedFile = await ImagePicker().pickVideo(
+  static Future<XFile?> getVideoFromCamera() async {
+    return await ImagePicker().pickVideo(
       source: ImageSource.camera,
       preferredCameraDevice: CameraDevice.rear,
       maxDuration: const Duration(hours: 1),
     );
-
-    if (pickedFile != null) return File(pickedFile.path);
-    return null;
   }
 }
