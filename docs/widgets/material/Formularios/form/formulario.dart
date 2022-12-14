@@ -31,6 +31,7 @@ class Formulario extends StatelessWidget {
                         const PasswordField(),
                         ElevatedButton(
                           onPressed: () {
+                            FocusScope.of(context).unfocus();
                             state.sendForm(_keyForm);
                           },
                           child: const Text('Enviar'),
