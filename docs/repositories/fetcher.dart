@@ -98,6 +98,7 @@ class Fetcher {
     Encoding? encoding,
   }) async {
     http.MultipartRequest request = http.MultipartRequest('POST', url);
+    if (headers != null) request.headers.addAll(headers);
     if (body != null) request.fields.addAll(body);
     for (var i = 0; i < filesPaths.length; i++) {
       request.files.add(
@@ -126,6 +127,7 @@ class Fetcher {
     Encoding? encoding,
   }) async {
     http.MultipartRequest request = http.MultipartRequest('PUT', url);
+    if (headers != null) request.headers.addAll(headers);
     if (body != null) request.fields.addAll(body);
     for (var i = 0; i < filesPaths.length; i++) {
       request.files.add(
@@ -154,6 +156,7 @@ class Fetcher {
     Encoding? encoding,
   }) async {
     http.MultipartRequest request = http.MultipartRequest('PATCH', url);
+    if (headers != null) request.headers.addAll(headers);
     if (body != null) request.fields.addAll(body);
     for (var i = 0; i < filesPaths.length; i++) {
       request.files.add(
